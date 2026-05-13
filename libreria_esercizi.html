@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Libreria Esercizi — Coaching Enrico Lampis</title>
+<style>
+  :root {
+    --navy: #1a2942;
+    --bordeaux: #4a0f14;
+    --gold: #c9a35e;
+    --cream: #f8f3e9;
+    --grey: #6b6b6b;
+    --bg: #fafaf7;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: #222;
+    line-height: 1.5;
+  }
+  header {
+    background: var(--navy);
+    color: var(--cream);
+    padding: 32px 24px;
+    text-align: center;
+  }
+  header h1 {
+    margin: 0 0 6px; font-size: 28px; letter-spacing: 0.3px;
+  }
+  header p {
+    margin: 0; color: #c9c9c9; font-size: 14px;
+  }
+  main {
+    max-width: 1100px; margin: 0 auto; padding: 28px 20px 60px;
+  }
+  .intro {
+    background: white; padding: 16px 20px; border-radius: 8px;
+    border-left: 4px solid var(--gold); margin-bottom: 28px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    font-size: 14px; color: #444;
+  }
+  h2 {
+    color: var(--bordeaux); border-bottom: 2px solid var(--gold);
+    padding-bottom: 6px; margin-top: 36px; font-size: 19px;
+  }
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px; margin-top: 16px;
+  }
+  .card {
+    background: white; border-radius: 8px; padding: 14px 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    border-left: 3px solid var(--navy);
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .card h3 {
+    margin: 0 0 8px; font-size: 15px; color: var(--navy);
+  }
+  .card a {
+    display: inline-block;
+    color: white; background: var(--bordeaux);
+    padding: 6px 12px; border-radius: 4px;
+    text-decoration: none; font-size: 13px;
+    margin-right: 6px; margin-bottom: 4px;
+  }
+  .card a:hover { background: var(--navy); }
+  .card a::before { content: "\25B6"; margin-right: 5px; font-size: 10px; }
+  footer {
+    text-align: center; padding: 24px; color: var(--grey); font-size: 12px;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Libreria Esercizi</h1>
+  <p>Riferimento tecnico per ogni esercizio del programma</p>
+</header>
+<main>
+  <div class="intro">
+    <strong>Come usare questa pagina:</strong> ogni card corrisponde a un esercizio del tuo programma settimanale.
+    Clicca il pulsante video per vedere la corretta esecuzione su YouTube. Se ci sono piu video, vedrai
+    angolazioni o spiegazioni diverse — guardali entrambi prima di provare l'esercizio in palestra.
+  </div>
+  <h2>Lower body — Forza / Compound</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Bulgarian Split Squat</h3>
+      <a href="https://www.youtube.com/shorts/uODWo4YqbT8" target="_blank" rel="noopener">Guarda video</a>
+    </div>
+    <div class="card">
+      <h3>RDL manubri</h3>
+      <a href="https://www.youtube.com/shorts/5rIqP63yWFg" target="_blank" rel="noopener">Guarda video</a>
+    </div>
+    <div class="card">
+      <h3>RDL gambe rigide</h3>
+      <a href="https://www.youtube.com/shorts/Wou9zVQrAfs" target="_blank" rel="noopener">Guarda video</a>
+    </div>
+    <div class="card">
+      <h3>Step-up panca</h3>
+      <a href="https://www.youtube.com/shorts/8q9LVgN2RD4" target="_blank" rel="noopener">Guarda video</a>
+    </div>
+    <div class="card">
+      <h3>Walking Lunges</h3>
+      <a href="https://www.youtube.com/shorts/2ea3_b9rFdM" target="_blank" rel="noopener">Video 1</a>
+      <a href="https://www.youtube.com/shorts/mJilHWIBWO8" target="_blank" rel="noopener">Video 2</a>
+    </div>
+  </div>
+  <h2>Lower body — Glutei / Posterior chain</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Hip Thrust</h3>
+      <a href="https://www.youtube.com/shorts/euDIvpBWmDg" target="_blank" rel="noopener">Guarda video</a>
+    </div>
+    <div class="card">
+      <h3>Single-leg Hip Thrust</h3>
+      <a href="https://www.youtube.com/shorts/hKXqCXSXylA" target="_blank" rel="noopener">Guarda video</a>
+    </div>
+    <div class="card">
+      <h3>Cable Pull-through</h3>
+      <a href="https://www.youtube.com/shorts/cRszAB1yK0c" target="_blank" rel="noopener">Guarda video</a>
+    </div>
+  </div>
+  <h2>Lower body — Polpacci</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Calf raise</h3>
+      <a href="https://www.youtube.com/shorts/1H7dFHT3kIU" target="_blank" rel="noopener">Guarda video</a>
+    </div>
+  </div>
+  <h2>Upper body — Push (Petto / Spalle / Tricipiti)</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Panca piana DB</h3>
+      <a href="https://www.youtube.com/shorts/mTaiQemkEpU" target="_blank" rel="noopener">Guarda video</a>
+    </div>
+    <div class="card">
+      <h3>Panca incline DB</h3>
+      <a href="https://www.youtube.com/shorts/8fXfwG4ftaQ" target="_blank" rel="noopener">Guarda video</a>
+    </div>
+    <div class="card">
+      <h3>Shoulder press DB seduto</h3>
+      <a href="https://www.youtube.com/shorts/k6tzKisR3NY" target="_blank" rel="noopener">Guarda video</a>
+    </div>
+    <div class="card">
+      <h3>Alzate laterali</h3>
+      <a href="https://www.youtube.com/shorts/jUaqG4wou2k" target="_blank" rel="noopener">Guarda video</a>
+    </div>
+    <div class="card">
+      <h3>Cable tricep pushdown</h3>
+      <a href="https://www.youtube.com/shorts/1FjkhpZsaxc" target="_blank" rel="noopener">Guarda video</a>
+    </div>
+    <div class="card">
+      <h3>French press DB</h3>
+      <a href="https://www.youtube.com/shorts/YuIuGmYRktE" target="_blank" rel="noopener">Guarda video</a>
+    </div>
+  </div>
+  <h2>Upper body — Pull (Dorso / Bicipiti)</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Lat pulldown rack cavi</h3>
+      <a href="https://www.youtube.com/shorts/bNmvKpJSWKM" target="_blank" rel="noopener">Guarda video</a>
+    </div>
+    <div class="card">
+      <h3>Cable row seduto</h3>
+      <a href="https://www.youtube.com/shorts/LyZH4UGdDTc" target="_blank" rel="noopener">Guarda video</a>
+    </div>
+    <div class="card">
+      <h3>Rematore manubrio 1 braccio</h3>
+      <a href="https://www.youtube.com/shorts/_g4LMgFYCrA" target="_blank" rel="noopener">Guarda video</a>
+    </div>
+    <div class="card">
+      <h3>Face pull cavi</h3>
+      <a href="https://www.youtube.com/shorts/IeOqdw9WI90" target="_blank" rel="noopener">Video 1</a>
+      <a href="https://www.youtube.com/shorts/7iXk2Eylbv4" target="_blank" rel="noopener">Video 2</a>
+    </div>
+    <div class="card">
+      <h3>Curl manubri seduto</h3>
+      <a href="https://www.youtube.com/shorts/xaytbsVD_qE" target="_blank" rel="noopener">Guarda video</a>
+    </div>
+    <div class="card">
+      <h3>Hammer curl</h3>
+      <a href="https://www.youtube.com/shorts/Z7gLnOCO89c" target="_blank" rel="noopener">Guarda video</a>
+    </div>
+  </div>
+
+</main>
+<footer>
+  Coaching Enrico Lampis &middot; Libreria esercizi - aggiornata 2026-05-13
+</footer>
+</body>
+</html>

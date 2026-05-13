@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atlas Coaching</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="loading" class="state-screen">
+  <div class="spinner"></div>
+  <p>Caricamento...</p>
+</div>
+
+<div id="error" class="state-screen hidden">
+  <div class="card error-card">
+    <h2>Accesso non valido</h2>
+    <p id="errorMsg">Token mancante o non riconosciuto.</p>
+  </div>
+</div>
+
+<div id="welcome" class="state-screen hidden">
+  <div class="card welcome-card">
+    <div class="brand">Coaching Enrico Lampis</div>
+    <h1>Benvenuto, <span id="welcomeName">—</span></h1>
+    <p class="lead">
+      Il tuo percorso e' pronto. Quando clicchi <strong>Inizia</strong>, parte il conteggio dei 90 giorni
+      e ricevi automaticamente ogni giorno la lezione, l'allenamento della settimana e il piano alimentare.
+    </p>
+    <p class="lead-sub">
+      Non devi cercare nulla: tutto arriva qui, alla tua pagina.
+    </p>
+    <button id="btnStart" class="btn-primary">INIZIA IL MIO PERCORSO</button>
+  </div>
+</div>
+
+<div id="dashboard" class="hidden">
+  <header class="topbar">
+    <div class="brand">Coaching Enrico Lampis</div>
+    <div class="user-meta">
+      <span id="userName">—</span>
+      <span class="dot">&middot;</span>
+      <span>Giorno <strong id="dayCount">—</strong></span>
+      <span class="dot">&middot;</span>
+      <span>Settimana <strong id="weekCount">—</strong></span>
+    </div>
+  </header>
+
+  <main>
+    <!-- LEZIONE OGGI -->
+    <section class="hero">
+      <div class="hero-badge">Lezione di oggi</div>
+      <h2 id="lessonTitle">—</h2>
+      <div id="lessonPlayer" class="video-frame hidden">
+        <iframe id="lessonIframe" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+      </div>
+      <p id="lessonEmpty" class="muted hidden">La lezione di oggi non e' ancora disponibile.</p>
+    </section>
+
+    <!-- DELIVERY SETTIMANA -->
+    <section class="grid">
+      <div class="card delivery">
+        <h3>Allenamento — settimana corrente</h3>
+        <p id="allenTitle" class="card-sub">—</p>
+        <a id="allenLink" class="btn-secondary hidden" target="_blank" rel="noopener">Apri PDF</a>
+        <p id="allenEmpty" class="muted hidden">Materiale non disponibile.</p>
+      </div>
+
+      <div class="card delivery">
+        <h3>Piano dieta — settimana corrente</h3>
+        <p id="dietTitle" class="card-sub">—</p>
+        <a id="dietLink" class="btn-secondary hidden" target="_blank" rel="noopener">Apri PDF</a>
+        <p id="dietEmpty" class="muted hidden">Materiale non disponibile.</p>
+      </div>
+
+      <div class="card delivery">
+        <h3>Lista spesa — settimana corrente</h3>
+        <p id="spesaTitle" class="card-sub">—</p>
+        <a id="spesaLink" class="btn-secondary hidden" target="_blank" rel="noopener">Apri PDF</a>
+        <p id="spesaEmpty" class="muted hidden">Materiale non disponibile.</p>
+      </div>
+
+      <div class="card delivery">
+        <h3>Libreria esercizi</h3>
+        <p class="card-sub">Video di riferimento per ogni esercizio del programma.</p>
+        <a href="libreria_esercizi.html" class="btn-secondary" target="_blank">Apri libreria</a>
+      </div>
+    </section>
+
+    <!-- ARCHIVI -->
+    <section class="archives">
+      <h3>Le tue lezioni</h3>
+      <ul id="lessonsList" class="list"></ul>
+      <p id="lessonsListEmpty" class="muted hidden">Nessuna lezione precedente.</p>
+
+      <h3>Allenamenti precedenti</h3>
+      <ul id="allenList" class="list"></ul>
+
+      <h3>Diete precedenti</h3>
+      <ul id="dietList" class="list"></ul>
+
+      <h3>Liste spesa precedenti</h3>
+      <ul id="spesaList" class="list"></ul>
+    </section>
+  </main>
+
+  <footer>
+    Coaching Enrico Lampis &middot; <span id="footerStart">—</span>
+  </footer>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
