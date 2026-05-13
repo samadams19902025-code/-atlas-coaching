@@ -18,7 +18,7 @@ function showError(msg) {
 
 function getToken() {
   const params = new URLSearchParams(window.location.search);
-  return params.get("token") || params.get("c");
+  return params.get("k") || params.get("token") || params.get("c");
 }
 
 function ytEmbedUrl(url) {
