@@ -2,384 +2,75 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Libreria Esercizi — Coaching Enrico Lampis</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#E3E1DC">
+<title>Libreria esercizi | Coaching Enrico Lampis</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%231F2326'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%23E3E1DC'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="style.css">
 <style>
-  :root {
-    --navy: #1a2942;
-    --bordeaux: #4a0f14;
-    --gold: #c9a35e;
-    --cream: #f8f3e9;
-    --grey: #6b6b6b;
-    --bg: #fafaf7;
+  .lib-head { padding: 26px 0 8px; }
+  .lib-title { font: 800 clamp(46px, 13vw, 68px)/.92 var(--display); margin: 18px 0 10px; }
+  .lib-sub { margin: 0; color: var(--ferro-2); max-width: 40ch; }
+  .search { position: sticky; top: 0; z-index: 5; background: var(--cemento); padding: 14px 0 10px; }
+  .search input {
+    width: 100%; min-height: 52px; padding: 0 16px; border-radius: 12px;
+    border: 2px solid var(--ferro); background: var(--cemento-2); color: var(--ferro);
+    font: 500 17px/1 var(--text);
   }
-  * { box-sizing: border-box; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-    margin: 0; padding: 0;
-    background: var(--bg);
-    color: #222;
-    line-height: 1.5;
+  .search input::placeholder { color: var(--ferro-2); }
+  .chips { display: flex; gap: 8px; overflow-x: auto; padding: 4px 0 8px; margin: 0 -18px; padding-left: 18px; padding-right: 18px; }
+  .chip { flex: 0 0 auto; text-decoration: none; font-size: 14px; font-weight: 600; padding: 8px 12px; border-radius: 99px; background: var(--cemento-2); }
+  .cat { margin-top: 26px; scroll-margin-top: 140px; }
+  .cat-title { font: 800 26px/1.05 var(--display); margin: 0 0 6px; padding-bottom: 8px; border-bottom: 2px solid var(--ferro); }
+  .ex-list { list-style: none; margin: 0; padding: 0; }
+  .ex { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--linea); }
+  .ex-name { font-weight: 500; }
+  .ex-vids { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+  .vid {
+    display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 10px;
+    background: var(--blu); color: #fff; text-decoration: none; font-weight: 600; font-size: 14px; white-space: nowrap;
   }
-  header {
-    background: var(--navy);
-    color: var(--cream);
-    padding: 32px 24px;
-    text-align: center;
-  }
-  header h1 {
-    margin: 0 0 6px; font-size: 28px; letter-spacing: 0.3px;
-  }
-  header p {
-    margin: 0; color: #c9c9c9; font-size: 14px;
-  }
-  main {
-    max-width: 1100px; margin: 0 auto; padding: 28px 20px 60px;
-  }
-  .intro {
-    background: white; padding: 16px 20px; border-radius: 8px;
-    border-left: 4px solid var(--gold); margin-bottom: 28px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-    font-size: 14px; color: #444;
-  }
-  h2 {
-    color: var(--bordeaux); border-bottom: 2px solid var(--gold);
-    padding-bottom: 6px; margin-top: 36px; font-size: 19px;
-  }
-  .grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 14px; margin-top: 16px;
-  }
-  .card {
-    background: white; border-radius: 8px; padding: 14px 16px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-    border-left: 3px solid var(--navy);
-    transition: transform 0.15s, box-shadow 0.15s;
-  }
-  .card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  }
-  .card h3 {
-    margin: 0 0 8px; font-size: 15px; color: var(--navy);
-  }
-  .card a {
-    display: inline-block;
-    color: white; background: var(--bordeaux);
-    padding: 6px 12px; border-radius: 4px;
-    text-decoration: none; font-size: 13px;
-    margin-right: 6px; margin-bottom: 4px;
-  }
-  .card a:hover { background: var(--navy); }
-  .card a::before { content: "\25B6"; margin-right: 5px; font-size: 10px; }
-  footer {
-    text-align: center; padding: 24px; color: var(--grey); font-size: 12px;
-  }
+  @media (hover: hover) { .vid:hover { filter: brightness(1.1); } .chip:hover { background: var(--ferro); color: var(--cemento); } }
+  .none { margin: 28px 0; color: var(--ferro-2); }
+  @media (max-width: 420px) { .ex { flex-direction: column; align-items: stretch; } .ex-vids { justify-content: flex-start; } }
 </style>
 </head>
 <body>
-<header>
-  <h1>Libreria Esercizi</h1>
-  <p>Riferimento tecnico per ogni esercizio del programma</p>
-</header>
-<main>
-  <div class="intro">
-    <strong>Come usare questa pagina:</strong> ogni card corrisponde a un esercizio del tuo programma settimanale.
-    Clicca il pulsante video per vedere la corretta esecuzione su YouTube. Se ci sono piu video, vedrai
-    angolazioni o spiegazioni diverse — guardali entrambi prima di provare l'esercizio in palestra.
+<main class="wrap">
+  <header class="lib-head">
+    <p class="mono-mark" aria-hidden="true">EL</p>
+    <h1 class="lib-title">Libreria esercizi</h1>
+    <p class="lib-sub">Il video di riferimento per ogni esercizio della tua scheda. Se un esercizio ha due video, guardali entrambi prima di provarlo.</p>
+  </header>
+  <div class="search">
+    <label class="sr" for="q">Cerca un esercizio</label>
+    <input id="q" type="search" placeholder="Cerca un esercizio, es. curl" autocomplete="off">
+    <nav class="chips" aria-label="Vai alla categoria"><a class="chip" href="#lower-body-forza-compound">Lower body: forza / compound</a><a class="chip" href="#lower-body-glutei-posterior-chain">Lower body: glutei / posterior chain</a><a class="chip" href="#lower-body-polpacci">Lower body: polpacci</a><a class="chip" href="#upper-body-push-petto-spalle-tricipiti">Upper body: push (petto / spalle / tricipiti)</a><a class="chip" href="#upper-body-pull-dorso-bicipiti">Upper body: pull (dorso / bicipiti)</a><a class="chip" href="#addome-core">Addome / Core</a><a class="chip" href="#calisthenics-skill">Calisthenics / Skill</a><a class="chip" href="#correttivi">Correttivi</a><a class="chip" href="#mobilita-attiva-spalle-prehab">Mobilità attiva spalle (prehab)</a><a class="chip" href="#warm-up-mobilita-attivazione">Warm-up: mobilità &amp; attivazione</a></nav>
   </div>
-  <h2>Lower body — Forza / Compound</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Bulgarian Split Squat</h3>
-      <a href="https://www.youtube.com/shorts/uODWo4YqbT8" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>RDL manubri</h3>
-      <a href="https://www.youtube.com/shorts/5rIqP63yWFg" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>RDL gambe rigide</h3>
-      <a href="https://www.youtube.com/shorts/Wou9zVQrAfs" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Step-up panca</h3>
-      <a href="https://www.youtube.com/shorts/8q9LVgN2RD4" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Walking Lunges</h3>
-      <a href="https://www.youtube.com/shorts/2ea3_b9rFdM" target="_blank" rel="noopener">Video 1</a>
-      <a href="https://www.youtube.com/shorts/mJilHWIBWO8" target="_blank" rel="noopener">Video 2</a>
-    </div>
-    <div class="card">
-      <h3>Goblet squat</h3>
-      <a href="https://www.youtube.com/shorts/7-80HiXX1K8" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Goblet Squat talloni rialzati</h3>
-      <a href="https://www.youtube.com/shorts/0WFBvy-i22A" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-  </div>
-  <h2>Lower body — Glutei / Posterior chain</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Hip Thrust</h3>
-      <a href="https://www.youtube.com/shorts/euDIvpBWmDg" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Single-leg Hip Thrust</h3>
-      <a href="https://www.youtube.com/shorts/hKXqCXSXylA" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Cable Pull-through</h3>
-      <a href="https://www.youtube.com/shorts/cRszAB1yK0c" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>RDL al cavo</h3>
-      <a href="https://www.youtube.com/watch?v=XxdsXynwX0s" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Stacco gambe tese</h3>
-      <a href="https://www.youtube.com/shorts/Wou9zVQrAfs" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Stacco con manubri</h3>
-      <a href="https://www.youtube.com/watch?v=wR0Kmeie6tA" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Stacco una gamba a corpo libero</h3>
-      <a href="https://www.youtube.com/shorts/VRy4uMv_7Eo" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-  </div>
-  <h2>Lower body — Polpacci</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Calf raise</h3>
-      <a href="https://www.youtube.com/shorts/1H7dFHT3kIU" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-  </div>
-  <h2>Upper body — Push (Petto / Spalle / Tricipiti)</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Panca piana DB</h3>
-      <a href="https://www.youtube.com/shorts/mTaiQemkEpU" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Panca incline DB</h3>
-      <a href="https://www.youtube.com/shorts/8fXfwG4ftaQ" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Shoulder press DB seduto</h3>
-      <a href="https://www.youtube.com/shorts/k6tzKisR3NY" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Spinte verticali DB</h3>
-      <a href="https://www.youtube.com/shorts/k6tzKisR3NY" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Alzate laterali</h3>
-      <a href="https://www.youtube.com/shorts/jUaqG4wou2k" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Alzate frontali</h3>
-      <a href="https://www.youtube.com/watch?v=7tIUyC_GTmU" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Alzate frontali ai cavi</h3>
-      <a href="https://www.youtube.com/watch?v=7tIUyC_GTmU" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Cable tricep pushdown</h3>
-      <a href="https://www.youtube.com/shorts/1FjkhpZsaxc" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Push down al cavo</h3>
-      <a href="https://www.youtube.com/shorts/1FjkhpZsaxc" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>French press DB</h3>
-      <a href="https://www.youtube.com/shorts/YuIuGmYRktE" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Triceps kickback manubrio singolo</h3>
-      <a href="https://www.youtube.com/shorts/WhBxKbe1-NU" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Weighted Dip</h3>
-      <a href="https://www.youtube.com/shorts/ZDOrGNvRdM0" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Chest flies</h3>
-      <a href="https://www.youtube.com/shorts/rk8YayRoTRQ" target="_blank" rel="noopener">Video 1</a>
-      <a href="https://www.youtube.com/shorts/a9vQ_hwIksU" target="_blank" rel="noopener">Video 2</a>
-    </div>
-    <div class="card">
-      <h3>Peak fly</h3>
-      <a href="https://www.youtube.com/shorts/rk8YayRoTRQ" target="_blank" rel="noopener">Video 1</a>
-      <a href="https://www.youtube.com/shorts/a9vQ_hwIksU" target="_blank" rel="noopener">Video 2</a>
-    </div>
-    <div class="card">
-      <h3>Push-up larghi (focus petto) + Spinte su panca DB 2x15 kg (SUPERSET)</h3>
-      <a href="https://www.youtube.com/shorts/mTaiQemkEpU" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-  </div>
-  <h2>Upper body — Pull (Dorso / Bicipiti)</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Lat pulldown rack cavi</h3>
-      <a href="https://www.youtube.com/shorts/bNmvKpJSWKM" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Lat machine</h3>
-      <a href="https://www.youtube.com/shorts/UiEtZfPHTcg" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Cable row seduto</h3>
-      <a href="https://www.youtube.com/shorts/LyZH4UGdDTc" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Cable row 1 braccio</h3>
-      <a href="https://www.youtube.com/shorts/9TWiV80cUYs" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Pulley (cable row)</h3>
-      <a href="https://www.youtube.com/shorts/tUJP4cCBuNA" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Rematore manubrio 1 braccio</h3>
-      <a href="https://www.youtube.com/shorts/_g4LMgFYCrA" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Rematore manubri</h3>
-      <a href="https://www.youtube.com/watch?v=Q4srBobKsSI" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Pulldown al cavo alto (braccia tese)</h3>
-      <a href="https://www.youtube.com/shorts/8u9cJqoeWhM" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Face pull cavi</h3>
-      <a href="https://www.youtube.com/shorts/IeOqdw9WI90" target="_blank" rel="noopener">Video 1</a>
-      <a href="https://www.youtube.com/shorts/7iXk2Eylbv4" target="_blank" rel="noopener">Video 2</a>
-    </div>
-    <div class="card">
-      <h3>Row alto da seduto</h3>
-      <a href="https://www.youtube.com/shorts/vqPY3fDessY" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Curl manubri seduto</h3>
-      <a href="https://www.youtube.com/shorts/xaytbsVD_qE" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Curl manubri</h3>
-      <a href="https://www.youtube.com/shorts/MKWBV29S6c0" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Curl martello + Curl prono manubri</h3>
-      <a href="https://www.youtube.com/watch?v=OPqe0kCxmR8" target="_blank" rel="noopener">Video 1</a>
-      <a href="https://www.youtube.com/watch?v=6atlGiVu1NM" target="_blank" rel="noopener">Video 2</a>
-    </div>
-    <div class="card">
-      <h3>Curl a spalla estesa ai cavi</h3>
-      <a href="https://www.youtube.com/shorts/w3sXATQzGvc" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Hammer curl</h3>
-      <a href="https://www.youtube.com/shorts/Z7gLnOCO89c" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Rematore T-bar</h3>
-      <a href="https://www.youtube.com/shorts/hdL1_7Uxfyo" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Australian pull-up</h3>
-      <a href="https://www.youtube.com/shorts/qfsEK96Px-E" target="_blank" rel="noopener">Video 1</a>
-      <a href="https://www.youtube.com/shorts/drFCrI0yy8k" target="_blank" rel="noopener">Video 2</a>
-    </div>
-  </div>
-  <h2>Addome / Core</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Crunch</h3>
-      <a href="https://www.youtube.com/shorts/PkzgZxrf0Qs" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Crunch inverso</h3>
-      <a href="https://www.youtube.com/shorts/ZyE4r7wiI6w" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-  </div>
-  <h2>Calisthenics / Skill</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Toes-to-bar</h3>
-      <a href="https://www.youtube.com/shorts/LQY8Fs8xlPQ" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>MU anelli con banda</h3>
-      <a href="https://www.youtube.com/shorts/NCO1891FjOk" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Isometria 90° push-up in straddle</h3>
-      <a href="https://www.youtube.com/watch?v=6QauAixbJFg" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-  </div>
-  <h2>Correttivi</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Copenhagen adductor</h3>
-      <a href="https://www.youtube.com/shorts/u0l7inwy12E" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-  </div>
-  <h2>Mobilità attiva spalle (prehab)</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Shoulder CARs</h3>
-      <a href="https://www.youtube.com/watch?v=1GjmF3oZvu0" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Pass-through con elastico</h3>
-      <a href="https://www.youtube.com/watch?v=ss4JRHhoHCU" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Wall slides scapolari</h3>
-      <a href="https://www.youtube.com/shorts/i_0zLUcE-zk" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Esercizi cuffia dei rotatori</h3>
-      <a href="https://www.youtube.com/shorts/WpWikooVAGU" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-  </div>
-  <h2>Warm-up — Mobilità & Attivazione</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Scapular CARs</h3>
-      <a href="https://www.youtube.com/shorts/pN_QEJNY3kc" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Band pull-apart</h3>
-      <a href="https://www.youtube.com/shorts/SuvO4TBwSu4" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Wall scapular push</h3>
-      <a href="https://www.youtube.com/shorts/8m7pffdU8cM" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Y-T-W</h3>
-      <a href="https://www.youtube.com/shorts/tlcuHSz1TQE" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Adductor rock-back</h3>
-      <a href="https://www.youtube.com/shorts/EJE-OePfboI" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-    <div class="card">
-      <h3>Hip airplane</h3>
-      <a href="https://www.youtube.com/shorts/U5f8h7FDEa0" target="_blank" rel="noopener">Guarda video</a>
-    </div>
-  </div>
-
+  <section class="cat" id="lower-body-forza-compound"><h2 class="cat-title">Lower body: forza / compound</h2><ul class="ex-list"><li class="ex" data-q="bulgarian split squat lower body  forza / compound"><span class="ex-name">Bulgarian Split Squat</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/uODWo4YqbT8" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="rdl manubri lower body  forza / compound"><span class="ex-name">RDL manubri</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/5rIqP63yWFg" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="rdl gambe rigide lower body  forza / compound"><span class="ex-name">RDL gambe rigide</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/Wou9zVQrAfs" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="step-up panca lower body  forza / compound"><span class="ex-name">Step-up panca</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/8q9LVgN2RD4" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="walking lunges lower body  forza / compound"><span class="ex-name">Walking Lunges</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/2ea3_b9rFdM" target="_blank" rel="noopener noreferrer">Video 1</a><a class="vid" href="https://www.youtube.com/shorts/mJilHWIBWO8" target="_blank" rel="noopener noreferrer">Video 2</a></span></li><li class="ex" data-q="goblet squat lower body  forza / compound"><span class="ex-name">Goblet squat</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/7-80HiXX1K8" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="goblet squat talloni rialzati lower body  forza / compound"><span class="ex-name">Goblet Squat talloni rialzati</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/0WFBvy-i22A" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li></ul></section><section class="cat" id="lower-body-glutei-posterior-chain"><h2 class="cat-title">Lower body: glutei / posterior chain</h2><ul class="ex-list"><li class="ex" data-q="hip thrust lower body  glutei / posterior chain"><span class="ex-name">Hip Thrust</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/euDIvpBWmDg" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="single-leg hip thrust lower body  glutei / posterior chain"><span class="ex-name">Single-leg Hip Thrust</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/hKXqCXSXylA" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="cable pull-through lower body  glutei / posterior chain"><span class="ex-name">Cable Pull-through</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/cRszAB1yK0c" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="rdl al cavo lower body  glutei / posterior chain"><span class="ex-name">RDL al cavo</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/watch?v=XxdsXynwX0s" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="stacco gambe tese lower body  glutei / posterior chain"><span class="ex-name">Stacco gambe tese</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/Wou9zVQrAfs" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="stacco con manubri lower body  glutei / posterior chain"><span class="ex-name">Stacco con manubri</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/watch?v=wR0Kmeie6tA" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="stacco una gamba a corpo libero lower body  glutei / posterior chain"><span class="ex-name">Stacco una gamba a corpo libero</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/VRy4uMv_7Eo" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li></ul></section><section class="cat" id="lower-body-polpacci"><h2 class="cat-title">Lower body: polpacci</h2><ul class="ex-list"><li class="ex" data-q="calf raise lower body  polpacci"><span class="ex-name">Calf raise</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/1H7dFHT3kIU" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li></ul></section><section class="cat" id="upper-body-push-petto-spalle-tricipiti"><h2 class="cat-title">Upper body: push (petto / spalle / tricipiti)</h2><ul class="ex-list"><li class="ex" data-q="panca piana db upper body  push (petto / spalle / tricipiti)"><span class="ex-name">Panca piana DB</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/mTaiQemkEpU" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="panca incline db upper body  push (petto / spalle / tricipiti)"><span class="ex-name">Panca incline DB</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/8fXfwG4ftaQ" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="shoulder press db seduto upper body  push (petto / spalle / tricipiti)"><span class="ex-name">Shoulder press DB seduto</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/k6tzKisR3NY" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="spinte verticali db upper body  push (petto / spalle / tricipiti)"><span class="ex-name">Spinte verticali DB</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/k6tzKisR3NY" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="alzate laterali upper body  push (petto / spalle / tricipiti)"><span class="ex-name">Alzate laterali</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/jUaqG4wou2k" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="alzate frontali upper body  push (petto / spalle / tricipiti)"><span class="ex-name">Alzate frontali</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/watch?v=7tIUyC_GTmU" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="alzate frontali ai cavi upper body  push (petto / spalle / tricipiti)"><span class="ex-name">Alzate frontali ai cavi</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/watch?v=7tIUyC_GTmU" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="cable tricep pushdown upper body  push (petto / spalle / tricipiti)"><span class="ex-name">Cable tricep pushdown</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/1FjkhpZsaxc" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="push down al cavo upper body  push (petto / spalle / tricipiti)"><span class="ex-name">Push down al cavo</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/1FjkhpZsaxc" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="french press db upper body  push (petto / spalle / tricipiti)"><span class="ex-name">French press DB</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/YuIuGmYRktE" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="triceps kickback manubrio singolo upper body  push (petto / spalle / tricipiti)"><span class="ex-name">Triceps kickback manubrio singolo</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/WhBxKbe1-NU" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="weighted dip upper body  push (petto / spalle / tricipiti)"><span class="ex-name">Weighted Dip</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/ZDOrGNvRdM0" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="chest flies upper body  push (petto / spalle / tricipiti)"><span class="ex-name">Chest flies</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/rk8YayRoTRQ" target="_blank" rel="noopener noreferrer">Video 1</a><a class="vid" href="https://www.youtube.com/shorts/a9vQ_hwIksU" target="_blank" rel="noopener noreferrer">Video 2</a></span></li><li class="ex" data-q="peak fly upper body  push (petto / spalle / tricipiti)"><span class="ex-name">Peak fly</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/rk8YayRoTRQ" target="_blank" rel="noopener noreferrer">Video 1</a><a class="vid" href="https://www.youtube.com/shorts/a9vQ_hwIksU" target="_blank" rel="noopener noreferrer">Video 2</a></span></li><li class="ex" data-q="push-up larghi (focus petto) + spinte su panca db 2x15 kg (superset) upper body  push (petto / spalle / tricipiti)"><span class="ex-name">Push-up larghi (focus petto) + Spinte su panca DB 2x15 kg (SUPERSET)</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/mTaiQemkEpU" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li></ul></section><section class="cat" id="upper-body-pull-dorso-bicipiti"><h2 class="cat-title">Upper body: pull (dorso / bicipiti)</h2><ul class="ex-list"><li class="ex" data-q="lat pulldown rack cavi upper body  pull (dorso / bicipiti)"><span class="ex-name">Lat pulldown rack cavi</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/bNmvKpJSWKM" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="lat machine upper body  pull (dorso / bicipiti)"><span class="ex-name">Lat machine</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/UiEtZfPHTcg" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="cable row seduto upper body  pull (dorso / bicipiti)"><span class="ex-name">Cable row seduto</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/LyZH4UGdDTc" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="cable row 1 braccio upper body  pull (dorso / bicipiti)"><span class="ex-name">Cable row 1 braccio</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/9TWiV80cUYs" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="pulley (cable row) upper body  pull (dorso / bicipiti)"><span class="ex-name">Pulley (cable row)</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/tUJP4cCBuNA" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="rematore manubrio 1 braccio upper body  pull (dorso / bicipiti)"><span class="ex-name">Rematore manubrio 1 braccio</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/_g4LMgFYCrA" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="rematore manubri upper body  pull (dorso / bicipiti)"><span class="ex-name">Rematore manubri</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/watch?v=Q4srBobKsSI" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="pulldown al cavo alto (braccia tese) upper body  pull (dorso / bicipiti)"><span class="ex-name">Pulldown al cavo alto (braccia tese)</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/8u9cJqoeWhM" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="face pull cavi upper body  pull (dorso / bicipiti)"><span class="ex-name">Face pull cavi</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/IeOqdw9WI90" target="_blank" rel="noopener noreferrer">Video 1</a><a class="vid" href="https://www.youtube.com/shorts/7iXk2Eylbv4" target="_blank" rel="noopener noreferrer">Video 2</a></span></li><li class="ex" data-q="row alto da seduto upper body  pull (dorso / bicipiti)"><span class="ex-name">Row alto da seduto</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/vqPY3fDessY" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="curl manubri seduto upper body  pull (dorso / bicipiti)"><span class="ex-name">Curl manubri seduto</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/xaytbsVD_qE" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="curl manubri upper body  pull (dorso / bicipiti)"><span class="ex-name">Curl manubri</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/MKWBV29S6c0" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="curl martello + curl prono manubri upper body  pull (dorso / bicipiti)"><span class="ex-name">Curl martello + Curl prono manubri</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/watch?v=OPqe0kCxmR8" target="_blank" rel="noopener noreferrer">Video 1</a><a class="vid" href="https://www.youtube.com/watch?v=6atlGiVu1NM" target="_blank" rel="noopener noreferrer">Video 2</a></span></li><li class="ex" data-q="curl a spalla estesa ai cavi upper body  pull (dorso / bicipiti)"><span class="ex-name">Curl a spalla estesa ai cavi</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/w3sXATQzGvc" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="hammer curl upper body  pull (dorso / bicipiti)"><span class="ex-name">Hammer curl</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/Z7gLnOCO89c" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="rematore t-bar upper body  pull (dorso / bicipiti)"><span class="ex-name">Rematore T-bar</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/hdL1_7Uxfyo" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="australian pull-up upper body  pull (dorso / bicipiti)"><span class="ex-name">Australian pull-up</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/qfsEK96Px-E" target="_blank" rel="noopener noreferrer">Video 1</a><a class="vid" href="https://www.youtube.com/shorts/drFCrI0yy8k" target="_blank" rel="noopener noreferrer">Video 2</a></span></li></ul></section><section class="cat" id="addome-core"><h2 class="cat-title">Addome / Core</h2><ul class="ex-list"><li class="ex" data-q="crunch addome / core"><span class="ex-name">Crunch</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/PkzgZxrf0Qs" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="crunch inverso addome / core"><span class="ex-name">Crunch inverso</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/ZyE4r7wiI6w" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li></ul></section><section class="cat" id="calisthenics-skill"><h2 class="cat-title">Calisthenics / Skill</h2><ul class="ex-list"><li class="ex" data-q="toes-to-bar calisthenics / skill"><span class="ex-name">Toes-to-bar</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/LQY8Fs8xlPQ" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="mu anelli con banda calisthenics / skill"><span class="ex-name">MU anelli con banda</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/NCO1891FjOk" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="isometria 90 push-up in straddle calisthenics / skill"><span class="ex-name">Isometria 90° push-up in straddle</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/watch?v=6QauAixbJFg" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li></ul></section><section class="cat" id="correttivi"><h2 class="cat-title">Correttivi</h2><ul class="ex-list"><li class="ex" data-q="copenhagen adductor correttivi"><span class="ex-name">Copenhagen adductor</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/u0l7inwy12E" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li></ul></section><section class="cat" id="mobilita-attiva-spalle-prehab"><h2 class="cat-title">Mobilità attiva spalle (prehab)</h2><ul class="ex-list"><li class="ex" data-q="shoulder cars mobilita attiva spalle (prehab)"><span class="ex-name">Shoulder CARs</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/watch?v=1GjmF3oZvu0" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="pass-through con elastico mobilita attiva spalle (prehab)"><span class="ex-name">Pass-through con elastico</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/watch?v=ss4JRHhoHCU" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="wall slides scapolari mobilita attiva spalle (prehab)"><span class="ex-name">Wall slides scapolari</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/i_0zLUcE-zk" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="esercizi cuffia dei rotatori mobilita attiva spalle (prehab)"><span class="ex-name">Esercizi cuffia dei rotatori</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/WpWikooVAGU" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li></ul></section><section class="cat" id="warm-up-mobilita-attivazione"><h2 class="cat-title">Warm-up: mobilità &amp; attivazione</h2><ul class="ex-list"><li class="ex" data-q="scapular cars warm-up  mobilita &amp; attivazione"><span class="ex-name">Scapular CARs</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/pN_QEJNY3kc" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="band pull-apart warm-up  mobilita &amp; attivazione"><span class="ex-name">Band pull-apart</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/SuvO4TBwSu4" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="wall scapular push warm-up  mobilita &amp; attivazione"><span class="ex-name">Wall scapular push</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/8m7pffdU8cM" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="y-t-w warm-up  mobilita &amp; attivazione"><span class="ex-name">Y-T-W</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/tlcuHSz1TQE" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="adductor rock-back warm-up  mobilita &amp; attivazione"><span class="ex-name">Adductor rock-back</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/EJE-OePfboI" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li><li class="ex" data-q="hip airplane warm-up  mobilita &amp; attivazione"><span class="ex-name">Hip airplane</span><span class="ex-vids"><a class="vid" href="https://www.youtube.com/shorts/U5f8h7FDEa0" target="_blank" rel="noopener noreferrer">Guarda il video</a></span></li></ul></section>
+  <p id="none" class="none hidden">Nessun esercizio con questo nome. Prova con una parola sola, ad esempio "curl" o "squat".</p>
 </main>
-<footer>
-  Coaching Enrico Lampis &middot; Libreria esercizi - aggiornata 2026-05-17
-</footer>
+<footer class="foot wrap">Coaching Enrico Lampis</footer>
+<script>
+  const q = document.getElementById('q');
+  const norm = (s) => s.normalize('NFKD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+  q.addEventListener('input', () => {
+    const t = norm(q.value);
+    let shown = 0;
+    document.querySelectorAll('.cat').forEach((cat) => {
+      let n = 0;
+      cat.querySelectorAll('.ex').forEach((ex) => {
+        const ok = !t || ex.dataset.q.includes(t);
+        ex.classList.toggle('hidden', !ok); if (ok) n++;
+      });
+      cat.classList.toggle('hidden', n === 0); shown += n;
+    });
+    document.getElementById('none').classList.toggle('hidden', shown > 0);
+    document.querySelector('.chips').classList.toggle('hidden', !!t);
+  });
+</script>
 </body>
 </html>
