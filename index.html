@@ -37,12 +37,19 @@
 </div>
 
 <div id="dashboard" class="hidden">
+  <div class="days-bar" id="daysBar" aria-hidden="true"><span>Giorno</span> <b id="daysBarNum"></b></div>
   <main class="wrap">
     <header class="hello">
       <p class="mono-mark" aria-hidden="true">EL</p>
       <h1 class="hello-name">Ciao <span id="userName"></span></h1>
       <p id="helloSub" class="hello-sub"></p>
     </header>
+
+    <!-- contagiorni: blocco sotto il saluto (mobile), colonna fissa a lato (desktop) -->
+    <aside class="days" id="days" aria-label="Giorno del percorso">
+      <span class="days-label">Giorno</span>
+      <span class="days-num" id="daysNum"></span>
+    </aside>
 
     <section aria-labelledby="h-settimana">
       <h2 id="h-settimana" class="sr">Questa settimana</h2>

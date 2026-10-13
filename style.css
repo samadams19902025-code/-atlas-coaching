@@ -39,6 +39,37 @@ a { color: inherit; }
 }
 .hello-sub { margin: 0; color: var(--ferro-2); max-width: 36ch; }
 
+/* ---------- contagiorni ---------- */
+.days { display: flex; align-items: baseline; gap: 10px; margin: 0 0 22px; }
+.days-label { font: 600 15px/1 var(--text); color: var(--ferro-2); }
+.days-num { font: 800 64px/.9 var(--display); display: inline-flex; overflow: hidden; height: .9em; }
+.dg { display: inline-block; }
+.dg.roll { display: inline-flex; flex-direction: column; animation: roll .7s cubic-bezier(.3,.9,.3,1) .25s both; }
+.dg.roll > span { height: .9em; line-height: .9; }
+@keyframes roll { from { transform: translateY(0); } to { transform: translateY(-.9em); } }
+/* barra sottile che compare scorrendo (mobile) */
+.days-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 10;
+  padding: 8px 18px calc(8px); background: var(--ferro); color: var(--cemento);
+  font: 600 14px/1 var(--text); display: flex; gap: 6px; align-items: baseline;
+  transform: translateY(-100%); transition: transform .25s ease;
+}
+.days-bar b { font: 800 20px/1 var(--display); }
+.days-bar.show { transform: none; }
+@media (min-width: 1180px) {
+  .days-bar { display: none; }
+  .days {
+    position: fixed; top: 50%; left: max(24px, calc(50% - 320px - 190px)); transform: translateY(-50%);
+    flex-direction: column; align-items: flex-start; gap: 4px; margin: 0;
+    padding: 18px 20px 20px; border-left: 6px solid var(--ferro); background: var(--cemento-2); border-radius: 4px 14px 14px 4px;
+  }
+  .days-num { font-size: 96px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .dg.roll { animation: none; transform: translateY(-.9em); }
+  .days-bar { transition: none; }
+}
+
 /* ---------- materiali della settimana ---------- */
 .cards { display: grid; gap: 12px; }
 .mat {

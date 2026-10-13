@@ -90,12 +90,35 @@ function renderHistory(data) {
   }
 }
 
+// ---------- contagiorni ----------
+// Il numero scorre come un contachilometri da ieri a oggi: cambiano solo le cifre diverse.
+function renderDays(oggi) {
+  const ieri = Math.max(0, oggi - 1);
+  const box = $("daysNum");
+  box.textContent = "";
+  box.setAttribute("aria-label", String(oggi));
+  const a = String(oggi), b = String(ieri).padStart(a.length, " ");
+  for (let i = 0; i < a.length; i++) {
+    if (b[i] === a[i]) { box.append(el("span", { class: "dg", text: a[i] })); continue; }
+    const col = el("span", { class: "dg roll", "aria-hidden": "true" },
+      el("span", { text: b[i] === " " ? " " : b[i] }), el("span", { text: a[i] }));
+    box.append(col);
+  }
+  $("daysBarNum").textContent = String(oggi);
+  const bar = $("daysBar"), days = $("days");
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(([e]) => bar.classList.toggle("show", !e.isIntersecting && e.boundingClientRect.top < 0))
+      .observe(days);
+  }
+}
+
 // ---------- pagine ----------
 function renderDashboard(data) {
   const settimana = data.settimana_corrente || 1;
   $("userName").textContent = (data.nome || "").split(" ")[0];
   const inizio = dataLunga(data.data_start);
   $("helloSub").textContent = `Sei alla settimana ${settimana} del tuo percorso` + (inizio ? `, iniziato il ${inizio}.` : ".");
+  renderDays((data.giorni_trascorsi ?? 0) + 1);
   for (const kind of Object.keys(KINDS)) renderCard(kind, data[KINDS[kind].cur], settimana);
   renderHistory(data);
   screen("dashboard");
@@ -134,7 +157,7 @@ async function api(method, token) {
 function demoData() {
   const d = "https://drive.google.com/file/d/demo/view";
   return {
-    status: "active", nome: "Tiziano", data_start: "2026-05-17", giorni_trascorsi: 148, settimana_corrente: 22,
+    status: "active", nome: "Tiziano", data_start: "2026-05-17", giorni_trascorsi: 149, settimana_corrente: 22,
     allenamento_corrente: { settimana: 22, titolo: "Split 100-80% no skill v3", pdf_url: d },
     allenamenti_precedenti: [
       { settimana: 18, titolo: "Split 100-80% no skill v2", pdf_url: d },
